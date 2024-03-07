@@ -1,21 +1,24 @@
 from PIL import Image
 from ultralytics import YOLO
 
-# Load a pretrained YOLOv8n model
-model = YOLO('yolov8n.pt')
+def yolov8_inf(file_pth,i):
+    # Load a pretrained YOLOv8n model
 
-# Open an image using PIL
-source = Image.open('../task4/trickyimg/000000062808.jpg')
+    model = YOLO('yolov8n.pt')
 
-# Run inference on the source
-results = model(source)
-for i, r in enumerate(results):
-    # Plot results image
-    im_bgr = r.plot()  # BGR-order numpy array
-    im_rgb = Image.fromarray(im_bgr[..., ::-1])  # RGB-order PIL image
+    # Open an image using PIL
+    # file_pth = 'object_detection_imgs/02.jpg'
+    source = Image.open(file_pth)
 
-    # Show results to screen (in supported environments)
-    r.show()
+    # Run inference on the source
+    results = model(source)
+    for _, r in enumerate(results):
+        # Plot results image
+        im_bgr = r.plot()  # BGR-order numpy array
+        im_rgb = Image.fromarray(im_bgr[..., ::-1])  # RGB-order PIL image
 
-    # Save results to disk
-    # r.save(filename=f'results{i}.jpg')
+        # Show results to screen (in supported environments)
+        # r.show()
+
+        # Save results to disk
+        r.save(filename=f'object_detection_imgs/yolov8n_results{i}.jpg')
