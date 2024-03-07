@@ -3,7 +3,6 @@ from ultralytics import YOLO
 
 def yolov8_inf(file_pth,i):
     # Load a pretrained YOLOv8n model
-
     model = YOLO('yolov8n.pt')
 
     # Open an image using PIL

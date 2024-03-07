@@ -222,8 +222,8 @@ def run_style_transfer(cnn,
 
 def main():
 
-    style_img = image_loader("style_transfer_imgs/style_2.jpg")
-    content_img = image_loader("style_transfer_imgs/content_0.jpg")
+    style_img = image_loader("style_transfer_imgs/style_0.jpg")
+    content_img = image_loader("style_transfer_imgs/style_1.jpg")
     input_img = content_img.clone()
 
     assert style_img.size() == content_img.size(), \
